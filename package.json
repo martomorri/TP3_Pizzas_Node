@@ -11,8 +11,10 @@
   "author": "\"MorroAlote\"",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "mssql": "^9.1.1"
+    "mssql": "^9.1.1",
+    "nodemon": "^2.0.22"
   }
 }
