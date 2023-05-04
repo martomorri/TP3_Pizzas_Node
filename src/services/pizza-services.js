@@ -53,12 +53,12 @@ class PizzaService {
     }
 
     static deleteById = async id => {
-        let rowsAffected = 0;
+        let rowsAffected = null;
         console.log("deleteById(id)");
         try {
             let result = await pool.request().input("Id", sql.Int, id).execute("EliminarPizza");
             console.log(result);
-            rowsAffected = result.rowsAffected;
+            rowsAffected = result.recordset;
         } catch (error) {
             console.log(error);
         }

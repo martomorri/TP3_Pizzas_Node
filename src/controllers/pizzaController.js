@@ -29,7 +29,7 @@ router.put('', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const rowsAffected = await PizzaService.deleteById(req.params.id);
     // res.status(200).send("Rows affected:", rowsAffected)
-    return res.status(200).json({"rowsAffected":rowsAffected});
+    return res.status(200).json(rowsAffected);
 })
 
 export default router;
