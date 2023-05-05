@@ -26,17 +26,18 @@ input.onkeyup = (e) => {
     if (e.target.value) {
         let i = 0;
         while (i < lista_pizzas.length) {
-            for (let index = 0; index < e.target.value.length; index++) {
+            for (let index = 0; index < lista_pizzas[i].Nombre.length; index++) {
                 console.log(lista_pizzas[i].Nombre[index].toLowerCase());
-                if (e.target.value.toLowerCase() == lista_pizzas[i].Nombre[index].toLowerCase()) {
+                if (e.target.value.toLowerCase() == lista_pizzas[i].Nombre.substring(index, index+e.target.value.length).toLowerCase()) {
                     lista_busqueda.push(lista_pizzas[i]);
+                    break;
                 }
             }
             i++;
         }
         console.log(lista_busqueda);
+        tablaPizzas.innerHTML = "";
         lista_busqueda.forEach(element => {
-            tablaPizzas.innerHTML = "";
             const fila = document.createElement("tr");
             fila.innerHTML = `<th>${element.Id}</th>
                             <td>${element.Nombre}</td>
