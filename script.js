@@ -11,7 +11,8 @@ const getAllPizzas = (url) => {
                 const fila = document.createElement("tr");
                 fila.innerHTML = `<th>${element.Id}</th>
                                 <td>${element.Nombre}</td>
-                                <td>$${element.Importe}</td>`;
+                                <td>$${element.Importe}</td>
+                                <td><button onclick="verMas(${element.Id})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPizza">Ver Mas</button></td>`;
                 tablaPizzas.appendChild(fila);
             });
         })
@@ -41,7 +42,8 @@ input.onkeyup = (e) => {
             const fila = document.createElement("tr");
             fila.innerHTML = `<th>${element.Id}</th>
                             <td>${element.Nombre}</td>
-                            <td>$${element.Importe}</td>`;
+                            <td>$${element.Importe}</td>
+                            <td><button onclick="verMas(${element.Id})" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalPizza">Ver Mas</button></td>`;
             tablaPizzas.appendChild(fila);
         });
     } else {
@@ -51,11 +53,16 @@ input.onkeyup = (e) => {
 
 }
 
-// const verMas = id => {
-//     const titulo = document.getElementById("titulo");
-//     const detalle = document.getElementById("pizza");
-//     titulo.innerHTML = `${lista_pizzas[id-1].Nombre}`;
-//     detalle.innerHTML = `<p>${lista_pizzas[id-1].Descripcion}</p>
-//                         <hr style="border: 1px solid black; padding:0; opacity: 100;">
-//                         <b>Precio:</b>U$D ${lista_pizzas[id-1].Importe}<br>`;
-// }
+const verMas = id => {
+    const titulo = document.getElementById("titulo");
+    const detalle = document.getElementById("pizza");
+    let libre_gluten = "";
+    if (lista_pizzas[id-1].LibreGluten) {
+        libre_gluten = `<b>Libre de gluten</b><img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/092012/untitled-1_132.png?itok=ItDJ5uTY" width="40px">`
+    }
+    titulo.innerHTML = `${lista_pizzas[id-1].Nombre}`;
+    detalle.innerHTML = `<p>${lista_pizzas[id-1].Descripcion}</p>
+                        <hr style="border: 1px solid black; padding:0; opacity: 100;">
+                        <b>Precio:</b>$${lista_pizzas[id-1].Importe}<br>
+                        ${libre_gluten}`;
+}
